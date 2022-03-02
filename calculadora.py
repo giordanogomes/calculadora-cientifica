@@ -24,18 +24,37 @@ frame_cientifica.grid(row=1, column=0)
 frame_corpo = Frame(janela, width=290, height=340)
 frame_corpo.grid(row=2, column=0)
 
-# funções
+# Funções
 global todos_valores
 
 todos_valores = ''
 texto = StringVar()
 
 
+# entrada de valores na tela
 def inserir_valor(evento):
     global todos_valores
 
     todos_valores = todos_valores + str(evento)
     texto.set(todos_valores)
+
+
+# calculo dos operadores
+def calcular_valor():
+    global todos_valores
+
+    resultado = str(eval(todos_valores))
+    texto.set(resultado)
+
+    todos_valores = ''
+
+
+# limpando a tela
+def limpar_tela():
+    global todos_valores
+
+    todos_valores = ''
+    texto.set("")
 
 
 # configurando o frame tela
@@ -97,7 +116,7 @@ b_pare2.place(x=177, y=58)
 
 # frame corpo
 # parte 1
-b_resu = Button(frame_corpo, command=lambda: inserir_valor('C'), text='C', width=11, height=1, relief=RAISED,
+b_resu = Button(frame_corpo, command=limpar_tela, text='C', width=11, height=1, relief=RAISED,
                 overrelief=RIDGE, font='Ivy 10 bold', bg=cor4, fg=cor2)
 b_resu.place(x=0, y=0)
 
@@ -169,7 +188,7 @@ b_ponto = Button(frame_corpo, command=lambda: inserir_valor('.'), text='.', widt
                  overrelief=RIDGE, font='Ivy 10 bold', bg=cor1, fg=cor2)
 b_ponto.place(x=118, y=119)
 
-b_igual = Button(frame_corpo, command=lambda: inserir_valor('='), text='=', width=6, height=1, relief=RAISED,
+b_igual = Button(frame_corpo, command=calcular_valor, text='=', width=6, height=1, relief=RAISED,
                  overrelief=RIDGE, font='Ivy 10 bold', bg=cor4, fg=cor2)
 b_igual.place(x=177, y=119)
 
