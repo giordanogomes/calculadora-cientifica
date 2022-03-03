@@ -11,7 +11,7 @@ cor4 = "#424345"  # laranja
 # criando janela principal
 janela = Tk()
 janela.title('Calculadora')
-janela.geometry('259x292')
+janela.geometry('270x292')
 janela.config(bg=cor1)
 
 # criando frames
@@ -43,6 +43,37 @@ def inserir_valor(evento):
 def calcular_valor():
     global todos_valores
 
+    modulos = ['math.tan', 'math.sin', 'math.cos', 'math.sqrt', 'math.log',
+               'math.log10', 'math.e', 'math.pow', 'math.pi']
+
+    for i in modulos:
+        if i == 'math.tan':
+            todos_valores = todos_valores.replace('tan', i)
+
+        if i == 'math.sin':
+            todos_valores = todos_valores.replace('sin', i)
+
+        if i == 'math.cos':
+            todos_valores = todos_valores.replace('cos', i)
+
+        if i == 'math.sqrt':
+            todos_valores = todos_valores.replace('sqrt', i)
+
+        if i == 'math.log':
+            todos_valores = todos_valores.replace('log', i)
+
+        if i == 'math.log10':
+            todos_valores = todos_valores.replace('log10', i)
+
+        if i == 'math.e':
+            todos_valores = todos_valores.replace('e', i)
+
+        if i == 'math.pow':
+            todos_valores = todos_valores.replace('pow', i)
+
+        if i == 'math.pi':
+            todos_valores = todos_valores.replace('pi', i)
+
     resultado = str(eval(todos_valores))
     texto.set(resultado)
 
@@ -58,7 +89,7 @@ def limpar_tela():
 
 
 # configurando o frame tela
-label_tela = Label(frame_tela, textvariable=texto, width=16, height=2, padx=7, anchor='e', bd=0, justify=RIGHT,
+label_tela = Label(frame_tela, textvariable=texto, width=17, height=2, padx=10, anchor='e', bd=0, justify=RIGHT,
                    font='Ivy 18', bg=cor3, fg=cor2)
 label_tela.place(x=0, y=0)
 
