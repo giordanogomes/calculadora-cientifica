@@ -35,7 +35,7 @@ texto = StringVar()
 def inserir_valor(evento):
     global todos_valores
 
-    todos_valores = todos_valores + str(evento)
+    todos_valores += str(evento)
     texto.set(todos_valores)
 
 
